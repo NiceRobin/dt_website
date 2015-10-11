@@ -1,5 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div.container
+        div(class="header clearfix")
+            nav
+                ul(class="nav nav-pills pull-right")
+                    li.active(role="presentation")
+                        a(herf="#")="Home"
+                    li(role="presentation")
+                        a(herf="#")="About"
+                    li(role="presentation")
+                        a(herf="#")="Contact"
+            h3.text-muted= title
+        div.jumbotron
+            h2="说点什么吧 ~> <~"
+            p
+                div.input-group
+                    input#message.form-control(type="text", placeholder="点什么...")
+                    span.input-group-btn
+                        button#post(class="btn btn-default", type="button")="Post~"
+
+        div(class="panel panel-default")
+            div.panel-heading="其他人的话"
+            div.panel-body
+                ul.list-group#result
+                    each val in message
+                        li.list-group-item= val
+        footer.footer
+            p="© D-Touch 2015"
