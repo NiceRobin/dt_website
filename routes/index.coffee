@@ -19,7 +19,7 @@ router.get '/post_msg', (req, res, next) ->
     min = time.getMinutes()
     timeStr = "#{months}/#{day} #{hour}:#{min}"
 
-    cache.unshift() timeStr  + ": " + message.substring(0, 500) if message? and message isnt ""
+    cache.unshift timeStr  + ": " + message.substring(0, 500) if message? and message isnt ""
     cache.pop() if cache.length > 100
 
     html = ""
