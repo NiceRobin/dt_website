@@ -4,9 +4,12 @@ favicon         = require 'serve-favicon'
 logger          = require 'morgan'
 cookieParser    = require 'cookie-parser'
 bodyParser      = require 'body-parser'
+http            = require 'http'
 
 routes          = require './routes/index'
 users           = require './routes/users'
+
+debug           = require('debug')('dt_website:server')
 
 app = express()
 
@@ -41,4 +44,4 @@ app.use (err, req, res, next) ->
         message: err.message
         error: {}
 
-module.exports = app
+app.listen '3000'
