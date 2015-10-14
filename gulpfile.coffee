@@ -13,5 +13,5 @@ gulp.task '_stop', ['_pull'], (done) ->
     .on 'stop', (param) -> done()
 
 gulp.task 'update', ['_stop'], ->
-    forever.startDaemon './app.js'
+    forever.startDaemon './app.js', logFile: "#{__dirname}/../log/dt_site.log"
     
