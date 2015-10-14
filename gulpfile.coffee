@@ -2,6 +2,8 @@ gulp    = require 'gulp'
 forever = require 'forever'
 exec    = require('child_process').exec
 
+console.log __dirname
+
 gulp.task '_pull', (done) ->
     exec 'git pull', (err, stdout, stderr) -> 
         console.log stderr if stderr?
