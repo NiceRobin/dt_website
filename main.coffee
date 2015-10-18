@@ -5,23 +5,33 @@ logger          = require 'morgan'
 cookieParser    = require 'cookie-parser'
 bodyParser      = require 'body-parser'
 http            = require 'http'
+global.mongo    = require('./misc/mongo')()
 
-routes          = require './routes/index'
+debug           = require('debug')('dt:server')
+app             = express()
 
-debug           = require('debug')('dt_website:server')
+server          = require('http').createServer(app)
+io              = require('socket.io')(server)
 
-app = express()
+drawRoom        = require './socket/drawRoom'
+
+drawRoom(io)
 
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
 
 app.use favicon(path.join(__dirname, 'public', 'icon/favicon.ico'))
 app.use logger('tiny')
+
+app.use bodyParser.json( limit: '5mb')
+app.use bodyParser.urlencoded(extended: false, limit: '5mb')
+
 app.use bodyParser.json()
-app.use bodyParser.urlencoded(extended: false)
+
 app.use cookieParser()
 app.use express.static(path.join(__dirname, 'public'))
-app.use '/', routes
+app.use '/', require './routes/index'
+app.use '/draw', require './routes/draw'
 
 app.use (req, res, next) ->
     err = new Error('Not Found')
@@ -34,4 +44,5 @@ app.use (err, req, res, next) ->
         message: err.message
         error: err
 
-app.listen config.port
+server.listen config.port
+

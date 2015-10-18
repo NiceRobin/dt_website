@@ -1,0 +1,1 @@
+(function(){$(function(){return $("#post").on("click",function(s){var t;return t={message:$("#message").val().substring(0,500)},$("#message").val(""),$.post("/post_msg",t,function(s){return $("#result").html(s)})})})}).call(this);

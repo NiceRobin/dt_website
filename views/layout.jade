@@ -7,6 +7,20 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/jquery-2.1.4.min.js')
     script(src='/javascripts/bootstrap.min.js')
-    script(src='/javascripts/main.js')
+    block head
   body
-    block content
+    div.container
+        div(class="header clearfix")
+            nav
+                ul(class="nav nav-pills pull-right")
+                    li(role="presentation", class= page === "index" ? "active" : "")
+                        a(href="/")="首页"
+                    li(role="presentation", class= page === "draw" ? "active" : "")
+                        a(href='/draw')="绘茶"
+            h3.text-muted= title
+
+        block content
+
+        footer.footer
+            p="© D-Touch 2015"
+

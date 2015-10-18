@@ -1,0 +1,25 @@
+extends layout
+
+block head
+    link(rel='stylesheet', href='/stylesheets/bootstrap-colorpicker.min.css')
+    script(src='/javascripts/lz-string.min.js')
+    script(src='/javascripts/socket.io-1.3.7.js')
+    script(src='/javascripts/bootstrap-colorpicker.min.js')
+    script(src='/javascripts/draw.js')
+
+block content
+    p
+        div(class='btn-group draw-tool', role='group')
+            button#draw-save(class='btn btn-default', type='button')='保存'
+        div(class='btn-group draw-tool', role='group')
+            button.draw-brush(class='btn btn-default active', type='button', brush='1')='1'
+            button.draw-brush(class='btn btn-default', type='button', brush='3')='3'
+            button.draw-brush(class='btn btn-default', type='button', brush='5')='5'
+            button.draw-brush(class='btn btn-default', type='button', brush='7')='7'
+            button.draw-brush(class='btn btn-default', type='button', brush='10')='10'
+            button.draw-brush(class='btn btn-default', type='button', brush='25')='25'
+        div(class='btn-group draw-tool', role='group')
+            button#draw-color(class='btn btn-default', type='button')='颜色'
+    div.jumbotron
+        div.canvas-box
+            canvas#mainCanvas

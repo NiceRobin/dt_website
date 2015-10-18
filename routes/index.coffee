@@ -5,13 +5,14 @@ cache = []
 
 router.get '/', (req, res, next) ->
     param = 
-        title: "~ Double Touch 动漫社的网站 ~"
-        message: cache
+        title:      "~ Double Touch 动漫社的网站 ~"
+        message:    cache
+        page:       "index"
 
     res.render 'index', param
 
-router.get '/post_msg', (req, res, next) ->
-    message = req.query.message.toString()
+router.post '/post_msg', (req, res, next) ->
+    message = req.body.message.toString()
     time = new Date()
     months = time.getMonth() + 1
     day = time.getDate()
