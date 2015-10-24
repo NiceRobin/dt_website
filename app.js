@@ -1,3 +1,3 @@
 require('coffee-script/register');
-require('./config/config')
+require('./global');
 require('./main');

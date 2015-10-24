@@ -5,14 +5,9 @@ logger          = require 'morgan'
 cookieParser    = require 'cookie-parser'
 bodyParser      = require 'body-parser'
 http            = require 'http'
-global.mongo    = require('./misc/mongo')()
-
-debug           = require('debug')('dt:server')
 app             = express()
-
 server          = require('http').createServer(app)
 io              = require('socket.io')(server)
-
 drawRoom        = require './socket/drawRoom'
 
 drawRoom(io)
@@ -25,11 +20,11 @@ app.use logger('tiny')
 
 app.use bodyParser.json( limit: '5mb')
 app.use bodyParser.urlencoded(extended: false, limit: '5mb')
-
 app.use bodyParser.json()
 
 app.use cookieParser()
 app.use express.static(path.join(__dirname, 'public'))
+
 app.use '/', require './routes/index'
 app.use '/draw', require './routes/draw'
 
@@ -44,5 +39,6 @@ app.use (err, req, res, next) ->
         message: err.message
         error: err
 
-server.listen config.port
+server.listen config.port, ->
+    dlog 'hello dt server'
 
