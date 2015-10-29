@@ -8,13 +8,16 @@ http            = require 'http'
 app             = express()
 server          = require('http').createServer(app)
 io              = require('socket.io')(server)
+cookieSession   = require 'cookie-session'
 drawRoom        = require './socket/drawRoom'
 
 drawRoom(io)
 
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
+app.set 'trust proxy', 1
 
+app.use cookieSession { name: "dt-session", keys: config.cookie_key }
 app.use favicon(path.join(__dirname, 'public', 'icon/favicon.ico'))
 app.use logger('tiny')
 

@@ -1,0 +1,9 @@
+.signform {
+    width: 50%;
+    display: inline-block;
+    margin: 10px;
+}
+.sign-submit {
+    margin-top: 25px;
+    margin-right: 20px;
+}

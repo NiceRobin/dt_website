@@ -1,4 +1,4 @@
-gulp        = require 'gulp'
+gulpgulp        = require 'gulp'
 forever     = require 'forever'
 exec        = require('child_process').exec
 coffee      = require 'gulp-coffee'
