@@ -2,10 +2,7 @@ express     = require 'express'
 router      = express.Router()
 
 router.get '/', (req, res, next) ->
-    param = 
-        title:  "~ Double Touch 绘茶 ~"
-        page:   "draw"
-    res.render 'draw', param
+    site.pages.render req, res, 'draw'
 
 router.post '/save', (req, res, next) ->
     data = req.body.data

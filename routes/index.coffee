@@ -1,15 +1,9 @@
 express     = require 'express'
 router      = express.Router()
-
 cache = []
 
 router.get '/', (req, res, next) ->
-    param = 
-        title:      "~ Double Touch 动漫社的网站 ~"
-        message:    cache
-        page:       "index"
-
-    res.render 'index', param
+    site.pages.render req, res, 'index', { message: cache }
 
 router.post '/post_msg', (req, res, next) ->
     message = req.body.message.toString()

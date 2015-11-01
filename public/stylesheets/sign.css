@@ -1,9 +1,6 @@
-.signform {
-    width: 50%;
-    display: inline-block;
-    margin: 10px;
-}
-.sign-submit {
-    margin-top: 25px;
+.dt-sign-submit {
     margin-right: 20px;
+}
+.form-control-feedback {
+    width: 100px;
 }

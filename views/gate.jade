@@ -1,0 +1,36 @@
+div.modal.fade#gate-modal(role='dialog')
+    div.modal-dialog
+        div.modal-content#sign-content
+            div.modal-header
+                button.close(type='button' data-dismiss='modal')!='&times;'
+                h4.modal-title='登录'
+            div.modal-body
+                form.form#gate-form(role='form')
+                    div.form-group.has-feedback
+                        input.form-control#user-name(type='text', placeholder='用户名')
+                        span.form-control-feedback#user-name-feedback= ''
+
+                    div.form-group.has-feedback
+                        input.form-control#pwd(type='password', placeholder='密码')
+                        span.form-control-feedback#pwd-feedback= ''
+
+                    div.form-group.has-feedback.signup-element(hidden='true')
+                        input.form-control#confirm-pwd(type='password', placeholder='确认密码')
+                        span.form-control-feedback#confrim-pwd-feedback= ''
+
+                    div.form-group.has-feedback.signup-element(hidden='true')
+                        input.form-control#nickname(type='text', placeholder='昵称')
+                        span.form-control-feedback#nickname-feedback= ''
+
+                    div.form-group
+                        div.checkbox
+                            label
+                                input#long-session(type='checkbox')
+                                ='记住我'
+            div.modal-footer
+                div#signin-buttons
+                    a.dt-sign-submit.btn.btn-primary#signin(herf='' role='button')='登录'
+                    a.dt-sign-submit.btn#show-signup(herf='' role='button')='注册'
+                div#signup-buttons(hidden='true')
+                    a.dt-sign-submit.btn.btn-primary#signup(herf='' role='button')='注册'
+                    a.dt-sign-submit.btn#show-signin(herf='' role='button')='登录'
