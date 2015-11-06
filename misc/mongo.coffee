@@ -1,3 +1,5 @@
+bluebird.promisifyAll mongojs
+
 module.exports = ->
-    mongo = mongojs(config.mongo.db, config.mongo.collections)
+    mongo = new mongojs(config.mongo.db, config.mongo.collections)
     mongo

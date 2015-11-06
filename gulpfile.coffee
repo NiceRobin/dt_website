@@ -12,21 +12,12 @@ gulp.task '_pull', (done) ->
         console.log stderr if stderr?
         done(err)
 
-gulp.task '_stop', ['_pull'], (done) ->
-    forever.stop './app.js'
-    .on 'error', (param) -> done()
-    .on 'stop', (param) -> done()
+gulp.task 'env', ['_pull'], (done) ->
+    exec 'npm install', (err, stdout, stderr) -> 
+        console.log stderr if stderr?
+        done(err)
 
-gulp.task '_debug_build', ->
-    del ['public/javascripts/dt/*.js']
-    .then ->
-        gulp.src ['client/*.coffee']
-        .pipe sourcemaps.init()
-        .pipe coffee()
-        .pipe sourcemaps.write()
-        .pipe gulp.dest 'public/javascripts/dt/'
-
-gulp.task '_build', ->
+gulp.task '_build', ['env'], ->
     del ['public/javascripts/dt/*.js']
     .then ->
         gulp.src ['client/*.coffee']
@@ -34,5 +25,19 @@ gulp.task '_build', ->
         .pipe uglify()
         .pipe gulp.dest 'public/javascripts/dt/'
 
-gulp.task 'update', ['_stop', '_build'], ->
+gulp.task '_stop', ['_build'], (done) ->
+    forever.stop './app.js'
+    .on 'error', (param) -> done()
+    .on 'stop', (param) -> done()
+
+gulp.task 'update', ['_stop'], ->
     forever.startDaemon './app.js', logFile: "#{__dirname}/../log/dt_site.log"
+
+gulp.task 'debug_build', ->
+    del ['public/javascripts/dt/*.js']
+    .then ->
+        gulp.src ['client/*.coffee']
+        .pipe sourcemaps.init()
+        .pipe coffee()
+        .pipe sourcemaps.write()
+        .pipe gulp.dest 'public/javascripts/dt/'

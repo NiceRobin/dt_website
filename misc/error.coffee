@@ -1,6 +1,9 @@
-class Signin extends Error
-    constructor: (@message) ->
+class Basic
+    constructor: (@message, @data) ->
+
+    handle: (req, res) ->
+        res.send error: @message, data: @data
         
 
-module.exports = { Signin }
+module.exports = { Basic }
 

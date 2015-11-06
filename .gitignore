@@ -1,7 +1,8 @@
 # Logs
 logs
 *.log
-
+.DS_Store
+.atom-build.json
 # Runtime data
 pids
 *.pid

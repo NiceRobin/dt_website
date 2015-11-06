@@ -30,18 +30,7 @@ app.use cookieParser()
 app.use express.static(path.join(__dirname, 'public'))
 
 site.pages.route app
-
-app.use '/lab', require './routes/lab'
-
-app.use (req, res, next) ->
-    err = new Error('Not Found')
-    err.status = 404
-    next(err)
-
-app.use (err, req, res, next) ->
-    res.status = err.status or 500
-    dlog req.url, req.body, err if res.status isnt 404
-    site.pages.render req, res, 'error', { message: "~ #{res.status} ~" }
+site.errorHandler app
 
 server.listen config.port, ->
     dlog 'hello dt server'

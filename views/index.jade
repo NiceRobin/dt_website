@@ -5,17 +5,16 @@ block head
 
 block content
     div.jumbotron
-        h2="稍微~ 说点什么吧 ~> <~"
-        h2= test
+        h2="说点什么吧"
         p
-            div.input-group
-                input#message.form-control(type="text", placeholder="点什么...")
+            div#chat-post-form.form-group.input-group
+                input#chat-message.form-control(type="text", placeholder="点什么...")
                 span.input-group-btn
-                    button#post(class="btn btn-default", type="button")="Post~"
+                    button#chat-post(class="btn btn-default", type="button")="发送"
 
     div(class="panel panel-default")
         div.panel-heading="其他人的话"
         div.panel-body
-            ul.list-group#result
+            ul.list-group#chat-result
                 each val in message
                     li.list-group-item= val
