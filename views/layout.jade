@@ -1,36 +1,36 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/sign.css')
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/sign.css')
 
-    script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js')
-    script(src='http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js')
-    script(src='/javascripts/dt/gate.js')
-    script(src='/javascripts/sha256.js')
-    block head
-  body
-    div.container
-        div(class="header clearfix")
-            nav
-                ul(class="nav nav-pills pull-right")
-                    each value, key in pages
-                        li(role="presentation", class= name === key ? "active" : "")
-                            a(href= value.href)= value.name
-                    if nickname
-                        li(role="presentation")
-                            a#signout(href= '#')= nickname
-                    else
-                        li(role="presentation")
-                            a(data-toggle="modal" data-target='#gate-modal')='登录'
+        script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js')
+        script(src='http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js')
+        script(src='/javascripts/dt/gate.js')
+        script(src='/javascripts/sha256.js')
+        block head
+    body
+        div.container
+            div(class="header clearfix")
+                nav
+                    ul(class="nav nav-pills pull-right")
+                        each value, key in pages
+                            li(role="presentation", class= name === key ? "active" : "")
+                                a(href= value.href)= value.name
+                        if nickname
+                            li(role="presentation")
+                                a#signout(href= '#')= nickname
+                        else
+                            li(role="presentation")
+                                a(data-toggle="modal" data-target='#gate-modal')='登录'
 
-            h3.text-muted= title
+                h3.text-muted= title
 
-        block content
-        include ./gate.jade
-        footer.footer
-            p="© 2015 D-Touch."
-            a(href="http://www.miitbeian.gov.cn/")="猫爪与漫画 (京ICP备15055059)"
+            block content
+            include ./gate.jade
+            footer.footer
+                p="© 2015 D-Touch."
+                a(href="http://www.miitbeian.gov.cn/")="猫爪与漫画 (京ICP备15055059)"
 

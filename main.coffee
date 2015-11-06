@@ -31,6 +31,8 @@ app.use express.static(path.join(__dirname, 'public'))
 
 site.pages.route app
 
+app.use '/lab', require './routes/lab'
+
 app.use (req, res, next) ->
     err = new Error('Not Found')
     err.status = 404
