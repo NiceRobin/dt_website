@@ -46,8 +46,7 @@ router.post '/signin', (req, res, next) ->
     info = req.body
     username = info.username
     req.session.reset()
-
-    mongo.user.findAsync { username }, { pwd: 1 }
+    mongo.user.findAsync { username }
     .then (docs) ->
         throw new ServerError.Basic 'no_user' if docs.length <= 0
         bcrypt.compareAsync info.pwd, docs[0].pwd

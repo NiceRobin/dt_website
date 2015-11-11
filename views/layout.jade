@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title= title
+        title= pages[name].title
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         link(rel='stylesheet', href='/stylesheets/sign.css')
@@ -18,20 +18,28 @@ html
                 nav
                     ul(class="nav nav-pills pull-right")
                         each value, key in pages
-                            li(role="presentation", class= name === key ? "active" : "")
-                                a(href= value.href)= value.name
-                        if nickname
-                            li(role="presentation")
-                                a#signout(href= '#')= nickname
-                        else
-                            li(role="presentation")
-                                a(data-toggle="modal" data-target='#gate-modal')='登录'
+                            if value.topPage
+                                li(role="presentation", class= name === key ? "active" : "")
+                                    a(href= value.href)= value.name
+                        li(role="presentation")
+                            a.dropdwon-toggle(href='#', data-toggle='dropdown')='账号'
+                            ul.dropdown-menu
+                                li
+                                    a='111'
+                                li
+                                    a='222'
 
-                h3.text-muted= title
+                        //- if nickname
+                        //-     li(role="presentation")
+                        //-         a#signout(href='#')= nickname
+                        //- else
+                        //-     li(role="presentation")
+                        //-         a(data-toggle="modal" data-target='#gate-modal')='登录'
+
+                h3.text-muted= pages[name].title
 
             block content
             include ./gate.jade
             footer.footer
                 p="© 2015 D-Touch."
-                a(href="http://www.miitbeian.gov.cn/")="猫爪与漫画 (京ICP备15055059)"
-
+                a(href="http://www.miitbeian.gov.cn/")="京ICP备15055059"

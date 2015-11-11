@@ -4,6 +4,15 @@ router      = express.Router()
 router.get '/', (req, res, next) ->
     site.pages.render req, res, 'index', { message: [] }
 
+
+
+
+
+
+
+
+
+
 insertChat = (req, res, message, name) ->
     time = new Date()
     months = time.getMonth() + 1
@@ -25,7 +34,7 @@ router.post '/post_msg', (req, res, next) ->
     message = req.body.message.toString()
     return unless message.length < 500
     counter += 1
-    query = 
+    query =
         $push : {
             message: {
                 $each: ['hello' + counter]
@@ -38,11 +47,11 @@ router.post '/post_msg', (req, res, next) ->
     # if req.session.id?
     #     _id = mongojs.ObjectId(req.session.id)
     #     mongo.user.find { _id }, { nickname: 1 }, (err, docs) ->
-    
+
     # else
 
 
-    # message = 
+    # message =
     # time = new Date()
     # months = time.getMonth() + 1
     # day = time.getDate()

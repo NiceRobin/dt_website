@@ -7,6 +7,9 @@ class Topic
         @content[index] = msg
         @update()
 
+    appendContent: (msg) ->
+        @content.push msg
+
     update: ->
         @updateTime = new Date()
 

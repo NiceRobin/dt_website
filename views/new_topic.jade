@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    div.panel.panel-default
+        div.panel-heading.clearfix
+            div.input-group.dt-topic-head
+                span.input-group-addon='标题'
+                input.form-control(type='text')
+            div.input-group.dt-topic-head
+                span.input-group-addon='标签'
+                input.form-control(type='text', placeholder='用空格隔开')        
+        div.panel-body
+            textarea.form-control#topic-content
+        div.panel-footer.clearfix
+            button.btn.btn-success.pull-right="发布"

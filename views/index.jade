@@ -4,16 +4,10 @@ block head
     script(src='/javascripts/dt/index.js')
 
 block content
-    div.jumbotron
-        h2="说点什么吧"
-        p
-            div#chat-post-form.form-group.input-group
-                input#chat-message.form-control(type="text", placeholder="点什么...")
-                span.input-group-btn
-                    button#chat-post(class="btn btn-default", type="button")="发送"
-
-    div(class="panel panel-default")
-        div.panel-heading="其他人的话"
+    div.panel.panel-default
+        div.panel-heading.clearfix
+            h3.panel-title.pull-left.dt-panel-title="话题"
+            button.btn.btn-primary.pull-right="发布新话题"
         div.panel-body
             ul.list-group#chat-result
                 each val in message

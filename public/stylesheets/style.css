@@ -93,3 +93,17 @@ body {
 		border-bottom: 0;
 	}
 }
+
+.dt-panel-title {
+    margin-top: 8px;
+}
+
+#topic-content {
+    height: 500px;
+    width: 100%;
+    resize: none;
+}
+.dt-topic-head {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

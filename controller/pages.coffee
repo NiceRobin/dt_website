@@ -1,20 +1,26 @@
 
 pagesInfo =
     index:
+        topPage: true
         href: '/'
         name: '首页'
-        title: 'Double Touch 动漫社的网站'
+        title: '猫爪与漫画'
     draw:
+        topPage: true
         href: '/draw'
         name: '绘茶'
-        title: 'Double Touch 绘茶'
-
+        title: '绘茶'
+    new_topic:
+        topPage: false
+        name: '新话题'
+        title: '新话题'
+    error:
+        topPage: false
+        title: '你想要的并不存在'
 pages =
     render: (req, res, name, param = {}) ->
         param.pages = pagesInfo
         param.name = name
-        param.title = if name is 'error' then '你想要的并不存在' else pagesInfo[name].title
-
         user = req.session.user
         if user?
             param.nickname = user.nickname
@@ -26,5 +32,6 @@ pages =
         app.use '/', require '../routes/index'
         app.use '/draw', require '../routes/draw'
         app.use '/gate', require '../routes/gate'
+        app.use '/new_topic', require '../routes/newTopic'
 
 module.exports = pages
