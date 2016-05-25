@@ -1,8 +1,8 @@
 class Message
     constructor: (@owner, @content) ->
-        @update()
+        @_update()
 
-    update: ->
+    _update: ->
         @updateTime = new Date()
 
 module.exports = Message

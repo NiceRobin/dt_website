@@ -42,7 +42,7 @@ router.post '/post_msg', (req, res, next) ->
             }
         }
 
-    mongo.chat.update { room: 1 }, query, {upsert: true}, (err, docs) ->
+    mongo.chat.update { room: 1 }, query, { upsert: true }, (err, docs) ->
 
     # if req.session.id?
     #     _id = mongojs.ObjectId(req.session.id)

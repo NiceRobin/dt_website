@@ -21,20 +21,15 @@ html
                             if value.topPage
                                 li(role="presentation", class= name === key ? "active" : "")
                                     a(href= value.href)= value.name
-                        li(role="presentation")
-                            a.dropdwon-toggle(href='#', data-toggle='dropdown')='账号'
-                            ul.dropdown-menu
-                                li
-                                    a='111'
-                                li
-                                    a='222'
-
-                        //- if nickname
-                        //-     li(role="presentation")
-                        //-         a#signout(href='#')= nickname
-                        //- else
-                        //-     li(role="presentation")
-                        //-         a(data-toggle="modal" data-target='#gate-modal')='登录'
+                                    
+                        if nickname
+                            li(role="presentation")
+                                a#user(href='#')= nickname
+                            li(role="presentation")
+                                a#signout(href='#')= '登出'
+                        else
+                            li(role="presentation")
+                                a(data-toggle="modal" data-target='#gate-modal')='登录'
 
                 h3.text-muted= pages[name].title
 

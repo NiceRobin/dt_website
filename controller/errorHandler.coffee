@@ -6,10 +6,9 @@ module.exports = (app) ->
         next(err)
 
     app.use (err, req, res, next) ->
-        if err instanceof ServerError.Basic
+        if ServerError.isServerError err
             err.handle req, res
         else
             dlog err
             res.status = err.status or 500
             site.pages.render req, res, 'error', { message: "#{res.status}" }
-

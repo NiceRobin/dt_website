@@ -3,14 +3,18 @@ class Topic
         @content = []
         @tags = []
 
-    setContent: (index, msg) ->
+    editContent: (index, msg) ->
         @content[index] = msg
-        @update()
+        @_update()
 
     appendContent: (msg) ->
         @content.push msg
+        @_update()
 
-    update: ->
+    _update: ->
         @updateTime = new Date()
+
+    save: ->
+        
 
 module.exports = Topic

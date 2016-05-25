@@ -7,7 +7,7 @@ block content
     div.panel.panel-default
         div.panel-heading.clearfix
             h3.panel-title.pull-left.dt-panel-title="话题"
-            button.btn.btn-primary.pull-right="发布新话题"
+            a#new-topic.btn.btn-primary.pull-right(href='/new_topic' target='_blank')="发布新话题"
         div.panel-body
             ul.list-group#chat-result
                 each val in message
