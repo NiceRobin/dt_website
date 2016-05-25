@@ -1,6 +1,6 @@
 /* Space out content a bit */
 * {
-	font-family: sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
 }
 body {
 	padding-top: 20px;
@@ -29,7 +29,7 @@ body {
 .footer {
 	padding-right: 15px;
 	padding-left: 15px;
-	font-size: 50%;
+	font-size: 100%;
 }
 
 /* Custom page header */

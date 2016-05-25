@@ -6,6 +6,7 @@ uglify      = require 'gulp-uglify'
 sourcemaps  = require 'gulp-sourcemaps'
 del         = require 'del'
 env         = require 'gulp-env'
+coffeeify   = require 'gulp-coffeeify'
 
 gulp.task '_pull', (done) ->
     exec 'git pull', (err, stdout, stderr) -> 
@@ -26,11 +27,20 @@ gulp.task '_debug_build', ->
         .pipe sourcemaps.write()
         .pipe gulp.dest 'public/javascripts/dt/'
 
+        gulp.src ['apx3d/apx3d.coffee']
+        .pipe coffeeify(options: debug: true)
+        .pipe gulp.dest 'public/javascripts/dt/'
+
 gulp.task '_build', ->
     del ['public/javascripts/dt/*.js']
     .then ->
         gulp.src ['client/*.coffee']
         .pipe coffee()
+        .pipe uglify()
+        .pipe gulp.dest 'public/javascripts/dt/'
+
+        gulp.src ['apx3d/apx3d.coffee']
+        .pipe coffeeify()
         .pipe uglify()
         .pipe gulp.dest 'public/javascripts/dt/'
 

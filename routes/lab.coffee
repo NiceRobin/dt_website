@@ -2,8 +2,6 @@ express     = require 'express'
 router      = express.Router()
 
 router.get '/', (req, res, next) ->
-    res.render 'lab'
-
-
+    site.pages.render req, res, 'lab'
 
 module.exports = router

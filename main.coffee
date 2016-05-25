@@ -41,7 +41,7 @@ app.use (req, res, next) ->
 app.use (err, req, res, next) ->
     res.status = err.status or 500
     dlog req.url, req.body, err if res.status isnt 404
-    site.pages.render req, res, 'error', { message: "~ #{res.status} ~" }
+    site.pages.render req, res, 'error', { message: "< #{res.status} >" }
 
 server.listen config.port, ->
     dlog 'hello dt server'

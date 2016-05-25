@@ -34,6 +34,7 @@ router.post '/signup', (req, res, next) ->
                 mongo.user.insert {username, pwd, nickname}, (err, docs) ->
                     return next(new Error(err)) if err?
                     req.session.id = docs._id
+                    req.session.nickname = docs.nickname
                     if info.longSession is 'true'
                         req.session.setDuration utils.dayToMillisecond(config.session_max_age), false
                     res.send { error: 'none' }
@@ -43,15 +44,15 @@ router.post '/signin', (req, res, next) ->
     info = req.body
     username = info.username
     req.session.reset()
-    mongo.user.find { username }, { pwd: 1 }, (err, docs) ->
+    mongo.user.find { username }, { pwd: 1, nickname: 1 }, (err, docs) ->
         return next(new Error(err)) if err?
         return next(new Error('duplicate user')) if docs.length > 1
         return res.send { error: 'no_user' } if docs.length <= 0
-
         bcrypt.compare info.pwd, docs[0].pwd, (err, match) ->
             return next(new Error(err)) if err?
             return res.send { error: 'pwd_wrong' } if match is false
             req.session.id = docs[0]._id
+            req.session.nickname = docs[0].nickname
             if info.longSession is 'true'
                 req.session.setDuration utils.dayToMillisecond(config.session_max_age), false
             res.send { error: 'none' }

@@ -1,9 +1,13 @@
-html
-    head
-        meta(property="og:title" content="赚翻啦！前5位点击的朋友将免费获得1000金币的奖励！")
-        meta(property="og:image" content="https://d1zo3jyoi9iukg.cloudfront.net/web/public/share/share_mega_win.jpg")
-        meta(property="og:description" content="玩转“纸牌世界”，金币滚滚来！")
-        meta(property="og:title" content="赚翻啦！前5位点击的朋友将免费获得1000金币的奖励！")
-        meta(property="og:site_name" content="Solitaire-World!")
-        script(type="text/javascript")!="window.location.href=\"https://www.facebook.com/solitairetm?fb_source=game_share&share_from=1201673209849548&share_type=share_level_up&share_id=5639f230514cd6e66c9c26eb\";"
-    body
+extends layout
+
+block head
+    link(rel='stylesheet', href='/stylesheets/bootstrap-colorpicker.min.css')
+    script(src='http://cdn.bootcss.com/socket.io/1.3.7/socket.io.min.js')
+    script(src='/javascripts/lz-string.min.js')
+    script(src='/javascripts/bootstrap-colorpicker.min.js')
+
+block content
+    div.jumbotron
+        div.canvas-box
+            canvas#apx3dCanvas
+    script(src='/javascripts/dt/apx3d.js')
