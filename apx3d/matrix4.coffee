@@ -34,4 +34,14 @@ class Matrix4
         m.mat[15] = 1.0
         m
 
+    @makeRotationX: (radians) ->
+
+
+    @makeRotationY: (radians) ->
+
+
+    @makeRotationZ: (radians) ->
+        
+
+
 module.exports = Matrix4

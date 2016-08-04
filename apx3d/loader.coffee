@@ -20,4 +20,4 @@ module.exports =
                         callback(result) if count is urls.length
         return
                 
-
+    cache: -> cache
